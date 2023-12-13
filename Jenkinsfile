@@ -2,11 +2,6 @@ pipeline {
     agent any
 
     stages {
-        stage('Clone Repository') {
-            steps {
-                git 'https://github.com/haythemtimoumi/projet.git'
-            }
-        }
 
         stage('Build & Compile') {
             steps {
