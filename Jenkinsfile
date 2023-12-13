@@ -3,7 +3,7 @@ pipeline {
 
     stages {
 
-        stage('Build & Compile') {
+        stage('Build & Compilee') {
             steps {
                 script {
                     // Use Maven or Gradle based on your project setup
