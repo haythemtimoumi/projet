@@ -15,10 +15,10 @@ pipeline {
         stage('Test with JUnit') {
             steps {
                 script {
-                script {
+
                     sh 'mvn test' // Explicitly running tests again, this could be redundant
                     junit '**/target/surefire-reports/TEST-*.xml'
-                }
+                
             }
         }
     }
