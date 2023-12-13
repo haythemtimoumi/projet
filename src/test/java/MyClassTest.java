@@ -1,34 +1,31 @@
-import static org.mockito.Mockito.*;
-import static org.junit.Assert.*;
-import org.junit.Before;
-import org.junit.runner.RunWith;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
+import java.util.Date;
+import java.util.Optional;
 
-@RunWith(MockitoJUnitRunner.class)
-public class MyClassTest {
+@ExtendWith(MockitoExtension.class)
+class UserServiceImplTest {
 
     @Mock
-    private DependencyClass dependency;
+    UserRepository userRepository;
 
-    private MyClass myClassInstance;
-
-    @Before
-    public void setUp() {
-        // Initialize MyClass with the mocked DependencyClass
-        myClassInstance = new MyClass(dependency);
-    }
+    @InjectMocks
+    UserServiceImpl userService;
 
     @Test
-    public void testSomeMethodToTest() {
+    public void testRetrieveUser() {
         // Arrange
-        when(dependency.someMethod()).thenReturn("Expected Value");
+        User user = new User("f1", "l1", new Date(), Role.ADMINISTRATEUR);
+        Mockito.when(userRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(user));
 
         // Act
-        String result = myClassInstance.someMethodToTest();
+        User retrievedUser = userService.retrieveUser("2");
 
         // Assert
-        assertEquals("Expected Value", result);
+        Assertions.assertNotNull(retrievedUser);
     }
 }

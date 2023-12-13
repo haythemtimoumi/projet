@@ -17,7 +17,6 @@ pipeline {
                 script {
 
                     sh 'mvn test' // Explicitly running tests again, this could be redundant
-                    junit '**/target/surefire-reports/Test-*.xml'
                 }
             }
         }
