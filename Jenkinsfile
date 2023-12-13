@@ -15,7 +15,8 @@ pipeline {
         stage('Test with JUnit') {
             steps {
                 script {
-                    // Tests are typically run in the build step, but you can add additional test steps if required
+                script {
+                    sh 'mvn test' // Explicitly running tests again, this could be redundant
                     junit '**/target/surefire-reports/TEST-*.xml'
                 }
             }
