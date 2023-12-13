@@ -36,13 +36,13 @@ pipeline {
             steps {
                 script {
                     // Log in to DockerHub
-                    sh 'docker login -u <timou123> -p <123Azerty>'
+                    sh 'docker login -u timou123 -p 123Azerty'
                     
                     // Tag the Docker image
-                    sh 'docker tag my-springboot-app <timou123>/my-springboot-app:1.0'
+                    sh 'docker tag my-springboot-app timou123/my-springboot-app:1.0'
                     
                     // Push the Docker image to DockerHub
-                    sh 'docker push <timou123>/my-springboot-app:1.0'
+                    sh 'docker push timou123/my-springboot-app:1.0'
                 }
             }
         }
